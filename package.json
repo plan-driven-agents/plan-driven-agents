@@ -52,11 +52,15 @@
     "typecheck": "tsc --noEmit",
     "prepare": "node --eval \"const { existsSync } = require('node:fs'); if (existsSync('.git')) { require('node:child_process').execFileSync('bunx', ['husky'], { stdio: 'inherit' }); }\""
   },
+  "dependencies": {
+    "@opencode-ai/plugin": "1.15.6"
+  },
   "devDependencies": {
     "@biomejs/biome": "latest",
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "@types/node": "^22.0.0",
+    "gray-matter": "^4.0.3",
     "husky": "latest",
     "typescript": "latest"
   }
