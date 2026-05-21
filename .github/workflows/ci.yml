@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # commitlint needs history
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun test
+
+      - name: Build
+        run: bun run build
+
+      - name: Verify generated .claude-plugin matches definitions
+        run: |
+          bun run generate
+          git diff --exit-code .claude-plugin/
+
+      - name: E2E (in-process + tarball)
+        run: bun run e2e
+
+      - name: Commitlint (PR commits only)
+        if: github.event_name == 'pull_request'
+        run: bunx commitlint --from=${{ github.event.pull_request.base.sha }} --to=${{ github.event.pull_request.head.sha }}
