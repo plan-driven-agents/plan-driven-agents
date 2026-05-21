@@ -46,6 +46,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "e2e": "bun test tests/e2e",
     "test": "bun test",
     "lint": "biome check .",
     "format": "biome format --write .",
