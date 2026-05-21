@@ -1,0 +1,12 @@
+{
+  "release-type": "node",
+  "packages": {
+    ".": {
+      "package-name": "plan-driven-agents",
+      "release-type": "node",
+      "include-component-in-tag": false,
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true
+    }
+  }
+}
