@@ -1,0 +1,10 @@
+{
+  "name": "plan-driven-agents",
+  "version": "0.1.0",
+  "description": "Plan-driven agents — explicit, verifiable work plans for AI coding agents.",
+  "author": { "name": "plan-driven-agents" },
+  "homepage": "https://github.com/plan-driven-agents/plan-driven-agents",
+  "repository": "https://github.com/plan-driven-agents/plan-driven-agents",
+  "license": "MIT",
+  "agents": "./agents/"
+}
