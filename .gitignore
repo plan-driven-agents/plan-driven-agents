@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# TypeScript incremental
+*.tsbuildinfo
+
+# Local env
+.env
+
+# Coverage
+coverage/
